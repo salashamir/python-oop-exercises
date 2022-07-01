@@ -41,26 +41,27 @@ class WordFinder:
 
 
 class SpecialWordFinder(WordFinder):
-    """Subclass inherits from WordFinder, meant to discard comment lines and blacnk lines whenr eading file"""
+    """Subclass inherits from WordFinder, meant to discard comment lines and blacnk lines whenr eading file
+    
+    Parse file into list of words, skipping over blank lines and comments starting with #
+        
+    >>> swf = SpecialWordFinder('words2.txt')
+    4 words read
+
+    >>> swf.random() in ['kale','parsnips','apple','mango']
+    True
+
+    >>> swf.random() in ['kale','parsnips','apple','mango']
+    True
+
+    >>> swf.random() in ['kale','parsnips','apple','mango']
+    True
+
+    >>> swf.random() in ['kale','parsnips','apple','mango']
+    True
+    """
     def __read_from_file__(self, path_to_file):
-        """Parse file into list of words, skipping over blank lines and comments starting with #
-        
-        >>> swf = SpecialWordFinder('words2.txt')
-        4 words read
-
-        >>> swf.random() in ['kale','parsnips','apple','mango']
-        True
-
-        >>> swf.random() in ['kale','parsnips','apple','mango']
-        True
-
-        >>> swf.random() in ['kale','parsnips','apple','mango']
-        True
-
-        >>> swf.random() in ['kale','parsnips','apple','mango']
-        True
-        """
-        
+        """Parse words from file filtering out blank lines and comments"""
         list_of_words = []
         with open(path_to_file, 'r') as f:
             for word in f:
